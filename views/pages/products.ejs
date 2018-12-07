@@ -1,0 +1,163 @@
+<% include header.ejs%>
+
+<% include menu.ejs %>
+    <div class="ui grid column">
+        <div class="one wide column"></div>
+
+        <div class="eight wide column">
+            <div class="ui segment">
+                <h2 class="ui header">
+                    Punk beers
+                </h2>
+                <table class="ui striped table">
+                    <thead>
+                    <tr>
+                        <th>Punk beer</th>
+                        <th>Description</th>
+                        <th>Contributed by</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i=0; i < products.length; i++) { %>
+                        <form action="/list/<%= products[i].id %>" method="POST">
+                            <tr>
+                                <td>
+                                    <h4 class="ui image header">
+                                        <img src="<%- products[i].image_url%>" height="80" alt="<%- products[i].image_url%>"  class="ui mini rounded image">
+                                        <span class="content">
+                                            <input type="hidden" name="id" value="<%= products[i].id %>">
+                                            <input type="hidden" name="name" value="<%= products[i].name %>">
+                                N°<%= products[i].id %> | <%= products[i].name %>
+                                            <div class="sub header">
+                                                <input type="hidden" name="tagline" value="<%= products[i].tagline %>">
+                                    <%= products[i].tagline %>
+                                </div>
+                            </span>
+                                    </h4></td>
+                                <td>
+                                    <input type="hidden" name="description" value="<%= products[i].description %>">
+                                    <%= products[i].description %>
+                                </td>
+                                <td>
+                                    <div class="item">
+                                        <i class=""></i>
+                                        <div class="content">
+                                            <input type="hidden" name="contributed_by" value="<%= products[i].contributed_by %>">
+                                            <%= products[i].contributed_by %>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ui left floated compact segment">
+                                        <button type="submit" class="ui teal button">Ajouter</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </form>
+                    <% } %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                <div class="ui pagination menu">
+                                    <a class="item" data-vivaldi-spatnav-clickable="1">
+                                        <%= pages %>
+                                    </a>
+                                    <div class="disabled item">
+                                        ...
+                                    </div>
+                                    <a class="item" data-vivaldi-spatnav-clickable="1">
+                                        10
+                                    </a>
+                                    <a class="item" data-vivaldi-spatnav-clickable="1">
+                                        11
+                                    </a>
+                                    <a class="item active" data-vivaldi-spatnav-clickable="1">
+                                        12
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                    <!--<tr><th colspan="5">
+                            <div class="ui right floated pagination menu">
+                                <a class="icon item">
+                                    <i class="left chevron icon"></i>
+                                </a>
+                                <a class="item">1</a>
+                                <a class="item">2</a>
+                                <a class="item">3</a>
+                                <a class="item">4</a>
+                                <a class="icon item">
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>-->
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="two wide column"></div>
+
+        <div class="three wide column">
+            <div class="ui segment">
+                
+                <table class="ui striped table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h2 class="ui header">
+                                        Favorites <i class="icon red heart"></i>
+                                </h2>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Punk beer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (favorites !== undefined) { %>
+
+                            <% for(var j=0; j < favorites.length; j++) { %>
+                                <tr>
+                                    <td>
+                                        <h4 class="ui image header">
+                                            <span class="content">
+                                        N°<%= favorites[j].favorite_id %> | <%= favorites[j].fav_name %>
+                                                <div class="sub header">
+                                            <%= favorites[j].fav_tagline %>
+                                        </div>
+                                        </span>
+                                        </h4>
+                                    </td>
+        
+                                </tr>
+                            <% } %>
+                        
+                         <% } else { %>
+                            <tr>
+                                <td>
+                                    <h4>No favorites</h4>
+                                </td>
+                            </tr> 
+                         <% } %>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div style="margin-top:8px;" class="ui raised very padded text container segment">
+    <div class="ui equal width center aligned padded grid">
+        <em>copyright@2018</em>
+    </div>
+</div>
+
+<% include footer.ejs%>

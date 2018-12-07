@@ -1,0 +1,80 @@
+<% include header.ejs%>
+
+<% include menu.ejs%>
+
+    <div class="ui grid column">
+
+        <div class="one wide column"></div>
+
+        <div class="eight wide column">
+            <div style="margin-top:8px;" class="ui raised very padded text container segment center aligned">
+                <div>
+                    <form action="/list" method="post">
+                        <div class="ui right aligned category search">
+                            <button class="ui primary submit button" type="submit">Afficher la liste des produits</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="two wide column"></div>
+
+        <div class="three wide column">
+            <div>
+                <div class="three wide column">
+                    <div class="ui segment">
+
+                        <table class="ui striped table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <h2 class="ui header">
+                                        Favorites <i class="icon red heart"></i>
+                                    </h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Punk beer</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% if (favorites !== undefined) { %>
+
+                                <% for(var j=0; j < favorites.length; j++) { %>
+                                    <tr>
+                                        <td>
+                                            <h4 class="ui image header">
+                                            <span class="content">
+                                        N°<%= favorites[j].favorite_id %> | <%= favorites[j].fav_name %>
+                                                <div class="sub header">
+                                            <%= favorites[j].fav_tagline %>
+                                        </div>
+                                        </span>
+                                            </h4>
+                                        </td>
+
+                                    </tr>
+                                <% } %>
+
+                            <% } else { %>
+                                <tr>
+                                    <td>
+                                        <h4>No favorites</h4>
+                                    </td>
+                                </tr>
+                            <% } %>
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<% include footer.ejs%>
