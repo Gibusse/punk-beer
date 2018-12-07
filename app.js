@@ -11,8 +11,7 @@ const express = require('express'),
     paginate = require('express-paginate'),
     events = require('events');
 
-const connectionString = 'postgres://xatgpwcgwsujic:7a0f5b673803d49b505e95d2cfa5e9402fc28cecfc78db881d0f7c37483c790a@ec2-184-72-234-230.compute-1.amazonaws.com:5432/d9h3dsdgl1f6iu';
-//const connectionString = 'postgres://postgres:coolbreeze01@localhost:5432/postgres';
+const connectionString = 'postgres://postgres:coolbreeze01@localhost:5432/postgres';
 
 const app = express();
 /*mountRoutes(app);*/
